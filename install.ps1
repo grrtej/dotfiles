@@ -1,5 +1,5 @@
 function install($from, $to) {
-  new-item -force -type dir (split-path -parent $to)
+  new-item -force -type dir (split-path -parent $to) | out-null
   new-item -force -type sym -path $to -target (resolve-path $from)
 }
 
