@@ -12,3 +12,7 @@ if (get-command nvim -ea silent) {
 } else {
   new-alias n notepad
 }
+
+if (get-command rg -ea silent) {
+  . "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\BurntSushi.ripgrep*\ripgrep*\complete\_rg.ps1"
+}
