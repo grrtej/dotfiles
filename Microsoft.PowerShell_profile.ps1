@@ -1,6 +1,7 @@
 # emacs keybindings
 set-psreadlineoption -editmode emacs
 set-psreadlinekeyhandler -key tab -function menucomplete
+set-psreadlineoption -predictionviewstyle listview
 
 # some shortcuts
 function ll { ls -force @args }
