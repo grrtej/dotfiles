@@ -4,3 +4,5 @@ function install($from, $to) {
 }
 
 install "Microsoft.PowerShell_profile.ps1" "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+install "vimrc" "~/vimfiles/vimrc"
+install "gvimrc" "~/vimfiles/gvimrc"
