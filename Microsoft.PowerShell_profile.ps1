@@ -8,3 +8,5 @@ new-alias n    gvim
 new-alias vlc  "C:\Program Files\VideoLAN\VLC\vlc.exe"
 function  ll   { ls -force @args }
 function  rmf  { rm -force @args }
+function  hex  { vim "+%!xxd" @args }
+function  ghex { gvim "+%!xxd" @args }
