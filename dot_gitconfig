@@ -3,3 +3,5 @@
 	name = Gurtej Saini
 [init]
 	defaultBranch = main
+
+# vim:ft=gitconfig
