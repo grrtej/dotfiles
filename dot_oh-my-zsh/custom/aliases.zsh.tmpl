@@ -1,0 +1,30 @@
+#
+# tmux
+#
+alias t="tmux"
+alias ta="tmux a"
+alias tls="tmux ls"
+
+{{- if lookPath "pacman" }}
+#
+# pacman
+# useful aliases for pruning system
+#
+alias pkg-rdeps="pactree -cro -d1"
+alias pkg-rdeps-recurse="pactree -cro"
+alias pkg-showoldmanual="comm -12 <(yay -Qqu | sort) <(yay -Qqe | sort)"
+alias pkg-showold="yay -Qu"
+{{- end }}
+
+{{- if lookPath "apt" }}
+#
+# apt
+# useful aliases for pruning system
+#
+alias pkg-rdeps="apt-cache rdepends --installed"
+alias pkg-rdeps-recurse="apt-cache rdepends --no-{suggests,conflicts,breaks,replaces,enhances} --installed --recurse"
+alias pkg-showoldmanual="comm -12 <(apt-mark showmanual | sort) <(apt-get -s upgrade | grep '^Inst' | cut -d' ' -f2 | sort)"
+alias pkg-showold="apt list --upgradable"
+{{- end }}
+
+# vim:ft=zsh
