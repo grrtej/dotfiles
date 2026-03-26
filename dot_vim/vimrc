@@ -1,0 +1,15 @@
+" load defaults
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+" colorscheme
+augroup my_retrobox_override
+  au!
+  au Colorscheme retrobox hi Normal ctermbg=NONE
+augroup END
+set background=dark
+colorscheme retrobox
+
+" search
+set shortmess-=S
+set hlsearch
