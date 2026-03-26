@@ -35,4 +35,14 @@ path+=(
 . "$HOME/.cargo/env"
 {{- end }}
 
+{{- if eq .chezmoi.os "android" }}
+#
+# ssh-agent termux
+#
+export SSH_AUTH_SOCK="${PREFIX}/var/run/ssh-agent.socket"
+if [[ ! -S "$SSH_AUTH_SOCK" ]]; then
+  unset SSH_AUTH_SOCK
+fi
+{{- end }}
+
 # vim:ft=zsh
