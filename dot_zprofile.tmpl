@@ -1,0 +1,38 @@
+# 
+# misc
+#
+export EDITOR="vim"
+
+{{- if eq .chezmoi.hostname "dietcoke" }}
+#
+# android sdk
+#
+export ANDROID_HOME="$HOME/.android-sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+path+=(
+  "$ANDROID_HOME/cmdline-tools/latest/bin"
+  "$ANDROID_HOME/platform-tools"
+  "$ANDROID_HOME/emulator"
+)
+
+#
+# libvirt
+#
+# session mode has networking issues
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+#
+# go
+#
+export GOPATH="$HOME/.go"
+path+=(
+  "$GOPATH/bin"
+)
+
+#
+# rust
+#
+. "$HOME/.cargo/env"
+{{- end }}
+
+# vim:ft=zsh
