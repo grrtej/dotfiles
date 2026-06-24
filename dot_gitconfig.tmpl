@@ -1,0 +1,14 @@
+[user]
+	email = grrtej@gmail.com
+	name = Gurtej Saini
+[init]
+	defaultBranch = main
+
+{{- if eq .chezmoi.os "windows" }}
+[core]
+	autocrlf = false
+	sshCommand = 'C:\\Windows\\System32\\OpenSSH\\ssh.exe'
+	editor = 'C:\\Program Files\\Vim\\current\\gvim.exe' --nofork
+{{- end }}
+
+# vim:ft=gitconfig
