@@ -1,0 +1,6 @@
+{{- if ne .chezmoi.os "linux" }}
+.oh-my-zsh/
+.zprofile
+.tmux.conf
+.vim/
+{{- end }}
