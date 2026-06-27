@@ -4,3 +4,7 @@
 .tmux.conf
 .vim/
 {{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
+Documents/
+{{- end }}
