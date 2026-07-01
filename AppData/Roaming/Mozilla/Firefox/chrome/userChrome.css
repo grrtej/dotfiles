@@ -1,0 +1,9 @@
+/* Remove space before tabs when not maximized */
+:root[sizemode=normal] .titlebar-spacer[type="pre-tabs"] {
+	display: none
+}
+
+/* Remove separator line between tabs and top-left buttons */
+:is(toolbarbutton, toolbarpaletteitem)~#tabbrowser-tabs::before {
+	display: none !important;
+}

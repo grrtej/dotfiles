@@ -1,0 +1,44 @@
+# firefox has obfuscated profile names, so need to manually find profiles,
+# and copy/link over configs. that's all this script does.
+# shouldn't even notice this script is there. use normal chezmoi flow.
+
+# runs on init, then whenever user.js is changed
+# userChrome.css is linked via chrome/, so no need to rerun then.
+# might wanna delete entryState bucket if some issues arise
+
+# TODO: is there a way to include a file sitting right beside the script without the complete path ?
+# not a huge issue tho
+# user.js hash: {{ include "AppData/Roaming/Mozilla/Firefox/user.js" | sha256sum }}
+
+$profilesDir = Join-Path $PWD "Profiles"
+$chromeDir = Join-Path $PWD "chrome"
+$userJSFile = Join-Path $PWD "user.js"
+
+if (-not (Test-Path $profilesDir -PathType Container)) { 
+  throw "please complete firefox initial setup" 
+}
+
+# a folder containing prefs.js is assumed to be a profile
+$activeProfiles = Get-ChildItem $profilesDir -Directory | Where-Object { 
+  Test-Path (Join-Path $_.FullName "prefs.js") -PathType Leaf 
+}
+
+foreach ($prof in $activeProfiles) {
+  $chromeLink = Join-Path $prof.FullName "chrome"
+  $userJSDest = Join-Path $prof.FullName "user.js"
+
+  # copy user.js into each profile
+  Copy-Item -Path $userJSFile -Destination $userJSDest -Force
+
+  if (Test-Path $chromeLink) {
+    if ((Get-Item $chromeLink).Attributes -match "ReparsePoint") {
+      Remove-Item $chromeLink
+    }
+    else {
+      throw "'$chromeLink' is not a junction, manual cleanup required to prevent data loss"
+    }
+  }
+
+  # link chrome/ into each profile
+  New-Item -ItemType Junction -Path $chromeLink -Value $chromeDir -ErrorAction Stop | Out-Null
+}
