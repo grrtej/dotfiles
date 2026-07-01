@@ -1,3 +1,5 @@
+README.md
+
 {{- if ne .chezmoi.os "linux" }}
 .oh-my-zsh/
 .zprofile
