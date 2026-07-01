@@ -1,6 +1,10 @@
 # firefox has obfuscated profile names, so need to manually find profiles,
 # and copy/link over configs. that's all this script does.
 # shouldn't even notice this script is there. use normal chezmoi flow.
+#
+# FIXME: if i change config in profile, chezmoi doesn't know
+# for example, delete the chrome/ link in a profile, it wont recreate
+# workaround: chezmoi state delete-bucket --bucket=entryState
 
 # runs on init, then whenever user.js is changed
 # userChrome.css is linked via chrome/, so no need to rerun then.
@@ -42,3 +46,5 @@ foreach ($prof in $activeProfiles) {
   # link chrome/ into each profile
   New-Item -ItemType Junction -Path $chromeLink -Value $chromeDir -ErrorAction Stop | Out-Null
 }
+
+# vim:ft=ps1
