@@ -8,5 +8,6 @@ README.md
 {{- end }}
 
 {{- if ne .chezmoi.os "windows" }}
+AppData/
 Documents/
 {{- end }}
