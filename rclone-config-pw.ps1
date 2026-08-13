@@ -25,13 +25,15 @@
 # Since the device+user context is globally unique and cannot be
 # impersonated (hopefully), the secure string is secure even when exposed.
 #
-# This solves my main issue: the password for rclone.conf is "remembered" securely.
+# This solves my main issue: the password for rclone.conf is "remembered"
+# without storing the actual password on my machine in plaintext.
 
 # Note:
-# DPAPI is used for encrypting the *password* (key file). That means the key file is tied to a machine.
+# DPAPI is used for encrypting the *password* (key file). That means the key file is tied to a machine (can be regenerated).
 # But rclone.conf encrypted by Rclone is portable as long as you know the password you used initially.
 # This is an intentional choice. I could make the rclone.conf tied to a machine and remove any user remembered passwords.
-# But that is unnecessary: password managers exist and it is a one time setup. Also prevents future recovery options.
+# But that is unnecessary because password managers exist, and you generate the key file once per machine.
+# Also, this setup keeps future config recovery/backup options open.
 
 # mostly vibe coded using gemini
 
