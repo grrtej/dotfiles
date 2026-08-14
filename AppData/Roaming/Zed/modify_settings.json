@@ -8,7 +8,15 @@
 -}}
 
 {{- if eq .chezmoi.hostname "DIETCOKE" -}}
-  {{- $_ := set $settings "buffer_font_family" "Cascadia Code" -}}
+  {{- $_ := $settings
+    | setValueAtPath "buffer_font_family" "Cascadia Code"
+  -}}
+{{- end -}}
+
+{{- if eq .chezmoi.hostname "MTNDEW" -}}
+  {{- $_ := $settings
+    | setValueAtPath "buffer_font_family" "JetBrains Mono"
+  -}}
 {{- end -}}
 
 {{- merge $settings $existing | toPrettyJson -}}
