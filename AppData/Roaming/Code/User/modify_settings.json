@@ -1,0 +1,16 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $existing := .chezmoi.stdin | default "{}" | fromJsonc -}}
+
+{{- $settings := dict -}}
+
+{{- if eq .chezmoi.hostname "DIETCOKE" -}}
+  {{- $_ := set $settings "editor.fontFamily" "Cascadia Code" -}}
+  {{- $_ := set $settings "editor.fontSize" 15 -}}
+{{- end -}}
+
+{{- if eq .chezmoi.hostname "MTNDEW" -}}
+  {{- $_ := set $settings "editor.fontFamily" "JetBrains Mono" -}}
+  {{- $_ := set $settings "editor.fontSize" 15 -}}
+{{- end -}}
+
+{{- merge $settings $existing | toPrettyJson -}}
