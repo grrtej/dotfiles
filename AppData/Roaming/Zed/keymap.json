@@ -1,0 +1,8 @@
+[
+  {
+    "bindings": {
+      "ctrl-k ctrl-v": "workspace::ToggleVimMode",
+      "ctrl-k f": "workspace::CloseProject",
+    },
+  },
+]
