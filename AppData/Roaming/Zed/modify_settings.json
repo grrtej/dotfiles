@@ -1,0 +1,14 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $existing := .chezmoi.stdin | default "{}" | fromJsonc -}}
+
+{{- $settings := dict
+  "auto_update" false
+  "disable_ai" true
+  "theme" "Gruvbox Dark"
+-}}
+
+{{- if eq .chezmoi.hostname "DIETCOKE" -}}
+  {{- $_ := set $settings "buffer_font_family" "Cascadia Code" -}}
+{{- end -}}
+
+{{- merge $settings $existing | toPrettyJson -}}
