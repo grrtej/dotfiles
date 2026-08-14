@@ -1,5 +1,7 @@
 # workaround for obfuscated firefox profile names
 
+# profile dir hash: {{- joinPath (osDir .chezmoi.targetFile) "Profiles/*" | glob | sortAlpha | join "\n" | sha256sum }}
+
 $profiles = Join-Path $PWD "Profiles"
 $chrome = Join-Path $PWD "chrome"
 $userjs = Join-Path $PWD "user.js"

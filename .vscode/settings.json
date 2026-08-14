@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "modify_*": "go",
+        "*.ps1.tmpl": "powershell"
     }
 }
