@@ -26,5 +26,3 @@ alias pkg-rdeps-recurse="apt-cache rdepends --no-{suggests,conflicts,breaks,repl
 alias pkg-showoldmanual="comm -12 <(apt-mark showmanual | sort) <(apt-get -s upgrade | grep '^Inst' | cut -d' ' -f2 | sort)"
 alias pkg-showold="apt list --upgradable"
 {{- end }}
-
-# vim:ft=zsh
