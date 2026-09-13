@@ -3,6 +3,13 @@
 #
 export EDITOR="vim"
 
+{{- if .chezmoi.kernel.osrelease | lower | contains "wsl" }}
+#
+# WSL
+#
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/wsl2-ssh-agent.sock
+{{- end }}
+
 {{- if eq .chezmoi.hostname "dietcoke" }}
 #
 # android sdk
