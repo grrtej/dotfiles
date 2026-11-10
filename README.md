@@ -1,17 +1,26 @@
 # dotfiles
 
-## Usage
+chezmoi source state for Windows and WSL/Linux. Git is the undo; `chezmoi diff` is the review.
 
-edit dotfiles in repo, then run diff/apply. avoid editing managed dotfiles directly
+## New machine
 
-`dotfiles <-> chezmoi <-> git`
+Install chezmoi and git. Linux/WSL: zsh + oh-my-zsh, Vim 9.1+, wsl2-ssh-agent. Windows: PowerShell 7, VS Code, Windows Terminal, Firefox (launch once).
 
 ```sh
-chezmoi init --ssh grrtej # new machine
-chezmoi git -- commit # commit change
-chezmoi git -- push # push changes
-chezmoi update -vn # pull and preview changes
-chezmoi diff # preview changes
-chezmoi apply # apply changes
-chezmoi managed # dotfiles managed on this machine
+git config --global core.autocrlf false   # .gitattributes owns line endings
+chezmoi init --ssh grrtej
+chezmoi diff
+chezmoi apply
+```
+
+Windows: run `~/.local/bin/rclone-config-password.ps1` once; it prompts for the rclone config password and sets `RCLONE_PASSWORD_COMMAND`. Hook: `chezmoi cd && git config core.hooksPath .githooks`.
+
+## Daily
+
+```sh
+chezmoi edit ~/.gitconfig
+chezmoi diff
+chezmoi apply
+chezmoi git -- commit -m "..."
+chezmoi update -vn
 ```
