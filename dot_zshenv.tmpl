@@ -1,2 +1,11 @@
+# .zshenv is sourced by every zsh (login, interactive, scripts).
+# Keep environment here; interactive config belongs in .zshrc.
 typeset -U path PATH
 path=("$HOME/.local/bin" $path)
+
+export EDITOR="vim"
+
+{{- if .chezmoi.kernel.osrelease | lower | contains "wsl" }}
+# WSL: use the Windows ssh-agent bridge
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/wsl2-ssh-agent.sock"
+{{- end }}
