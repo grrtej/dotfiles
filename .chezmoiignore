@@ -1,9 +1,7 @@
 README.md
-.vscode/
 
 {{- if ne .chezmoi.os "linux" }}
 .oh-my-zsh/
-.zprofile
 .zshenv
 .tmux.conf
 .vim/
@@ -12,5 +10,5 @@ README.md
 {{- if ne .chezmoi.os "windows" }}
 AppData/
 Documents/
-rclone-config-pw.ps1
+.local/bin/rclone-config-password.ps1
 {{- end }}
